@@ -2,182 +2,170 @@
 
 **Intelligent Full-Stack Study Planning and Task Management System**
 
-AI Study Planner is a full-stack web application designed to help students organize academic tasks, prioritize study schedules, and improve productivity through intelligent task management. The platform combines a modern React frontend, a Flask backend, and an AI-driven recommendation engine to provide personalized study planning and scheduling assistance.
+AI Study Planner is a full-stack web application designed to help students organize academic tasks, prioritize deadlines, and structure their study schedules.
 
-The system enables students to manage daily academic activities while receiving intelligent recommendations that support effective time management and structured learning.
+The platform combines a **React frontend, Flask REST API backend, SQLite database, and rule-based recommendation engine** to provide task management and intelligent study-planning assistance through a unified application.
 
 ---
 
 ## Overview
 
-Managing coursework, assignments, examinations, and personal study schedules can be challenging, particularly when multiple deadlines overlap. Traditional task management applications often provide only static scheduling features without considering task importance or study priorities.
+Managing assignments, examinations, quizzes, and multiple academic deadlines can make it difficult to maintain a structured study routine.
 
-AI Study Planner addresses this challenge by integrating intelligent scheduling with a full-stack architecture. The application combines task management, recommendation logic, and a responsive user interface to create a centralized academic planning platform.
+AI Study Planner addresses this problem by combining traditional task management with intelligent scheduling logic.
+
+The application allows students to:
+
+- Create and manage academic tasks
+- Assign priorities to tasks
+- Track deadlines
+- Store task information
+- Generate study recommendations
+- View structured study plans through an interactive interface
 
 ---
 
-## Key Features
+## Key Capabilities
 
-- Intelligent study schedule recommendations
-- Academic task creation, editing, and deletion
+- Academic task management
 - Priority-based task organization
-- Responsive full-stack web interface
-- RESTful backend API
+- Deadline-aware study planning
+- Intelligent study recommendations
+- React-based interactive interface
+- Flask REST API backend
+- SQLite data persistence
 - Modular application architecture
-- Scalable AI recommendation framework
+- Extensible recommendation framework
 
 ---
 
 ## System Architecture
 
-The application follows a modular three-layer architecture.
-
 ```text
-               User Interface (React)
-                        │
-                        ▼
-                Flask REST API Backend
-                        │
-        ┌───────────────┼───────────────┐
-        │               │               │
-        ▼               ▼               ▼
-  Task Management   SQLite Database   AI Recommendation Engine
-                        │
-                        ▼
-                Intelligent Study Plan
+                    User
+                     |
+                     v
+              React Frontend
+                     |
+                     v
+              Flask REST API
+                     |
+          +----------+----------+
+          |                     |
+          v                     v
+    Task Management        SQLite Database
+          |
+          v
+   Recommendation Engine
+          |
+          v
+   Intelligent Study Plan
+          |
+          v
+      User Interface
 ```
 
 ---
 
 ## Core Components
 
-### Frontend
+### 1. React Frontend
 
-The frontend is developed using React and provides an interactive interface for managing study activities.
+The frontend provides an interactive interface for managing academic activities.
 
-Features include:
+The interface supports:
 
-- Task dashboard
+- Task creation
+- Task editing
+- Task deletion
+- Task visualization
 - Study schedule management
-- User interaction
-- Dynamic updates
+- Dynamic interaction with the backend
+
+The frontend is built using **React with Vite**.
 
 ---
 
-### Backend
+### 2. Flask Backend
 
-The backend is implemented using Flask and exposes RESTful APIs for managing application data.
+The backend provides the application API and handles the core business logic.
 
 Responsibilities include:
 
 - Task management
-- Business logic
+- API request handling
 - Data persistence
-- API communication
+- Recommendation processing
+- Communication between the frontend and database
+
+The backend is implemented using **Flask**.
 
 ---
 
-### AI Recommendation Engine
+### 3. SQLite Database
 
-The recommendation engine analyzes task information and generates intelligent study suggestions based on predefined scheduling logic.
+SQLite provides lightweight persistent storage for application data.
 
-The recommendation module supports:
+The database stores information required for:
 
-- Task prioritization
-- Study scheduling
-- Productivity optimization
-
----
-
-## Technology Stack
-
-| Category | Technology |
-|-----------|------------|
-| Frontend | React (Vite) |
-| Backend | Flask |
-| Programming Language | Python, JavaScript |
-| Database | SQLite |
-| API | REST |
-| Styling | HTML5, CSS3 |
-| AI Logic | Rule-Based Recommendation Engine |
+- Academic tasks
+- Priorities
+- Deadlines
+- Study-planning information
 
 ---
 
-## Project Structure
+### 4. Recommendation Engine
+
+The recommendation engine uses predefined scheduling logic to analyze task information and generate study suggestions.
+
+The recommendation process considers factors such as:
+
+- Task priority
+- Deadline
+- Study requirements
+
+The current implementation uses a **rule-based recommendation approach**, providing a foundation that can later be extended with machine-learning techniques.
+
+---
+
+## Application Workflow
 
 ```text
-ai-study-planner/
-│
-├── frontend/          # React frontend
-├── backend/           # Flask backend
-├── agents.md          # AI workflow documentation
-├── README.md
-├── LICENSE
-└── .gitignore
+Create Academic Tasks
+          |
+          v
+Store Task Information
+          |
+          v
+Analyze Priority & Deadline
+          |
+          v
+Apply Scheduling Logic
+          |
+          v
+Generate Study Recommendations
+          |
+          v
+Display Study Plan
 ```
 
 ---
 
-## Installation
+## API
 
-### Clone the repository
+The application provides REST-based backend endpoints for task management and study recommendations.
 
-```bash
-git clone https://github.com/thrishikav9-del/ai-study-planner.git
-
-cd ai-study-planner
-```
-
----
-
-### Backend Setup
-
-```bash
-cd backend
-
-pip install -r requirements.txt
-
-python app.py
-```
-
----
-
-### Frontend Setup
-
-```bash
-cd frontend
-
-npm install
-
-npm run dev
-```
-
----
-
-## API Endpoints
-
-| Endpoint | Description |
-|----------|-------------|
+| Endpoint | Purpose |
+|---|---|
 | `/tasks` | Create, retrieve, update, and delete study tasks |
-| `/ai/suggestions` | Generate intelligent study recommendations |
-
----
-
-## Workflow
-
-The application follows the workflow below:
-
-1. Create study tasks.
-2. Store tasks in the backend database.
-3. Analyze task information.
-4. Generate intelligent study recommendations.
-5. Display optimized schedules through the frontend.
+| `/ai/suggestions` | Generate study recommendations |
 
 ---
 
 ## Example Use Case
 
-**Student Input**
+### Student Tasks
 
 ```text
 Assignment
@@ -189,13 +177,9 @@ Priority: Medium
 Deadline: Three Days
 ```
 
-↓
-
-**AI Recommendation**
+### Generated Study Plan
 
 ```text
-Study Plan
-
 08:00 – 10:00
 Assignment
 
@@ -206,64 +190,219 @@ Quiz Revision
 Practice Problems
 ```
 
+The example demonstrates how task information can be converted into a structured study schedule.
+
+---
+
+## Technology Stack
+
+| Category | Technology |
+|---|---|
+| Frontend | React |
+| Frontend Tooling | Vite |
+| Backend | Flask |
+| Programming Languages | Python, JavaScript |
+| Database | SQLite |
+| API Architecture | REST |
+| Styling | HTML5, CSS3 |
+| Recommendation Logic | Rule-Based AI |
+
+---
+
+## Project Structure
+
+```text
+ai-study-planner/
+│
+├── frontend/          # React frontend application
+│
+├── backend/           # Flask backend and API
+│
+├── agents.md          # AI workflow documentation
+│
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
+---
+
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/thrishikav9-del/ai-study-planner.git
+cd ai-study-planner
+```
+
+---
+
+### 2. Backend Setup
+
+Navigate to the backend:
+
+```bash
+cd backend
+```
+
+Install the Python dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start the Flask application:
+
+```bash
+python app.py
+```
+
+---
+
+### 3. Frontend Setup
+
+Open a new terminal and navigate to the frontend:
+
+```bash
+cd frontend
+```
+
+Install the JavaScript dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The frontend can then be accessed through the local development URL provided by Vite.
+
+---
+
+## Development Workflow
+
+The application follows a simple full-stack development flow:
+
+```text
+React UI
+   |
+   | HTTP Requests
+   v
+Flask REST API
+   |
+   +---- Task Management
+   |
+   +---- Recommendation Logic
+   |
+   v
+SQLite Database
+```
+
 ---
 
 ## Applications
 
-- Academic Planning
-- Student Productivity
-- Personal Task Management
-- Intelligent Scheduling
-- Educational Technology
+AI Study Planner can be used for:
+
+- Academic planning
+- Assignment management
+- Exam preparation
+- Student productivity
+- Task prioritization
+- Intelligent scheduling
+- Educational technology research
 
 ---
 
 ## Advantages
 
-- Simple and intuitive user interface
-- Intelligent study recommendations
-- Modular full-stack architecture
-- Easy to extend with advanced AI models
-- Lightweight and scalable
+- Combines frontend, backend, database, and AI logic in one application
+- Simple and intuitive task-management workflow
+- Priority-aware study planning
+- Lightweight SQLite-based storage
+- Modular architecture
+- Easy to extend with more advanced recommendation techniques
+
+---
+
+## Limitations
+
+- Current recommendations are based on predefined rules
+- No machine-learning personalization in the current implementation
+- Scheduling quality depends on the available task information
+- SQLite is intended for lightweight application usage
+- The current project is primarily designed as an academic full-stack prototype
 
 ---
 
 ## Future Enhancements
 
+Potential extensions include:
+
+- Machine-learning-based personalized recommendations
 - User authentication
 - Calendar integration
 - Email and notification reminders
-- Machine learning-based recommendation engine
 - Cloud deployment
 - Mobile application
-- Analytics dashboard
+- Study analytics dashboard
+- Personalized learning patterns
+- Adaptive scheduling based on historical study behavior
 
 ---
 
 ## Documentation
 
-Additional implementation details and AI workflow documentation are available in:
+Additional implementation and AI workflow information is available in:
 
-- `agents.md`
+**`agents.md`**
+
+---
+
+## Research Perspective
+
+AI Study Planner explores how intelligent scheduling logic can be integrated into a conventional full-stack application.
+
+The project combines:
+
+```text
+Frontend Development
+        +
+REST API Design
+        +
+Database Management
+        +
+Rule-Based AI
+        +
+Academic Task Planning
+```
+
+This provides a foundation for extending traditional productivity applications toward more adaptive and personalized study systems.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## Disclaimer
 
-This project was developed for educational purposes to demonstrate full-stack web development and AI-assisted study planning. The recommendation engine is intended to support study organization and should not replace individual academic planning.
+AI Study Planner was developed for educational purposes to demonstrate full-stack web development and AI-assisted study planning.
+
+The recommendations are intended to support organization and time management and should not replace individual academic judgment or planning.
 
 ---
 
 ## Author
 
-**Thrishika**
+**Vullasa Thrishika**
 
-B.Tech Computer Science and Engineering (Artificial Intelligence)
-
+B.Tech Artificial Intelligence  
 Amrita Vishwa Vidyapeetham
